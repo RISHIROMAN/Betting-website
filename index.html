@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betting Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .bet-option {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+
+        .bet-option:hover {
+            background-color: #aaa;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Betting Website</h1>
+    </header>
+    <main>
+        <h2>Choose Your Bet</h2>
+        <div class="bet-options">
+            <div class="bet-option" id="option1">Option 1</div>
+            <div class="bet-option" id="option2">Option 2</div>
+            <div class="bet-option" id="option3">Option 3</div>
+        </div>
+        <div id="result"></div>
+    </main>
+
+    <script>
+        const betOptions = document.querySelectorAll('.bet-option');
+        const resultDisplay = document.getElementById('result');
+
+        betOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const selectedOption = option.textContent;
+                const winningOption = getWinningOption();
+                if (selectedOption === winningOption) {
+                    resultDisplay.textContent = 'Congratulations! You win!';
+                } else {
+                    resultDisplay.textContent = 'Sorry, you lose. Try again!';
+                }
+            });
+        });
+
+        function getWinningOption() {
+            const randomNumber = Math.floor(Math.random() * 3) + 1;
+            return `Option ${randomNumber}`;
+        }
+    </script>
+</body>
+</html>
